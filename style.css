@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800;900&display=swap');
 body,
 body * {
 	margin:          unset;
@@ -10,11 +11,106 @@ body * {
 
 body{
     display: flex;
-    justify-content: center;
+	flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     height: 100vh;
 }
 
 #grid-table{
-    border:1px solid black;
+	box-shadow: 0 0 3px black	;
+	width:400px;
+	height: 400px;
+	cursor: cell;
+}
+div{
+	user-select: none;
+}
+
+header{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 8vh;
+	background-color: rgb(0, 39, 105);
+	color: antiquewhite;
+	font-size: 20px;
+	font-family:'Courier New', Courier, monospace;
+}
+
+footer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 5vh;
+	background-color: rgb(174, 174, 174);
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.buttons{
+	display: flex;
+	margin-top: 10px;
+	justify-content: space-around;
+	align-items: center;
+	width: 252px;
+}
+
+button{
+	background: lightslategrey;
+	width: 60px;
+	height: 25px;
+	border: none;
+	color: rgba(255, 255, 255, 0.979);
+	border-radius: 5px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 200;
+}
+
+button:hover{
+	box-shadow: 0 0 10px rgba(4, 54, 146, 0.573);
+}
+
+.slider-holder{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.slider{
+	-webkit-appearance: none;
+	width: 400px;
+	height: 14px;
+	background-color: rgba(128, 128, 128, 0.571);
+	border-radius: 8px;
+	margin-top: 8px;
+	cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb{
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	background-color: rgb(0, 39, 105);
+	border: 2px solid black;
+	border-radius: 50%;
+}
+
+.slider::-webkit-slider-thumb:hover{
+	background-color: orange;
+}
+
+.slider-value{
+	font-size: 1.5em;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 700;
 }

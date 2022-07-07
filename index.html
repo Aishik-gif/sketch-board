@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch-A-Sketch</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
-    <div id="grid-table"></div>
-</body>
+  </head>
+  <body>
+    <header>Etch-A-Sketch</header>
+    <div class="slider-holder">
+      <div class="slider-value"></div>
+      <input type="range" max="64" min="4" value="16" class="slider" />
+    </div>
+    <div id="container">
+      <div id="grid-table"></div>
+      <div class="buttons">
+        <button class="default">Draw</button>
+        <button class="eraser">Eraser</button>
+        <button class="reset">Clear</button>
+      </div>
+    </div>
+    <footer>Aishik</footer>
+  </body>
 </html>
