@@ -1,6 +1,32 @@
 let color = "black";
 let gridSize = document.querySelector(".slider").value;
 
+const wWindow = window.matchMedia("(max-width: 600px)");
+let colorGrid = function (e) {
+    if (e.type === "mouseover" && !mouseDown) return;
+    switch (color) {
+      case "black":
+        this.style.backgroundColor = color;
+        break;
+      case "white":
+        this.style.backgroundColor = color;
+        break;
+    }
+  };
+if (wWindow.matches) {
+  colorGrid = function (e) {
+    // if (e.type === "mouseover" && !mouseDown) return;
+    switch (color) {
+      case "black":
+        this.style.backgroundColor = color;
+        break;
+      case "white":
+        this.style.backgroundColor = color;
+        break;
+    }
+  };
+}
+
 document.querySelector(".slider-value").innerText = `${gridSize} x ${gridSize}`;
 const slider = document.querySelector(".slider");
 slider.addEventListener("input", (e) => {
@@ -54,19 +80,6 @@ document.addEventListener("mouseup", () => {
 function draw() {
   const gridPixels = document.querySelectorAll("div.column");
   gridPixels.forEach((pixel) => pixel.addEventListener("mouseover", colorGrid));
-  gridPixels.forEach((pixel) => pixel.addEventListener("mousedown", colorGrid));
-}
-
-function colorGrid(e) {
-  if (e.type === "mouseover" && !mouseDown) return;
-  switch (color) {
-    case "black":
-      this.style.backgroundColor = color;
-      break;
-    case "white":
-      this.style.backgroundColor = color;
-      break;
-  }
 }
 
 const resetButton = document.querySelector("button.reset");
