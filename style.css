@@ -36,8 +36,9 @@ header {
   height: 8vh;
   background-color: rgb(0, 39, 105);
   color: antiquewhite;
-  font-size: 20px;
+  font-size: 1.6em;
   font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
 }
 
 footer {
