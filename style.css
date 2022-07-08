@@ -45,6 +45,7 @@ body {
   height: 400px;
   cursor: crosshair;
 }
+
 div {
   user-select: none;
 }
@@ -141,6 +142,10 @@ button:hover {
   background-color: rgb(0, 39, 105);
   border: 2px solid black;
   border-radius: 50%;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background-color: orange;
 }
 
 .slider::-moz-slider-thumb:hover {
