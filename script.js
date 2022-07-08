@@ -5,6 +5,18 @@ let colorGrid = function (e) {
   if (e.type === "mouseover" && !mouseDown) return;
   if (color === "rainbow") {
     this.style.backgroundColor = `rgb(${randColor()},${randColor()},${randColor()})`;
+  } else if (color === "gray-scale") {
+    let a = parseInt(
+      this.style.backgroundColor[this.style.backgroundColor.length - 2]
+    );
+    if (this.style.backgroundColor === "white") {
+      this.style.backgroundColor = `rgba(0,0,0,0.1)`;
+    } else {
+      if (a < "9") {
+        a += 1;
+        this.style.backgroundColor = `rgba(0,0,0,0.${a})`;
+      }
+    }
   } else {
     this.style.backgroundColor = color;
   }
@@ -78,6 +90,7 @@ drawDefault.addEventListener("click", () => {
   drawDefault.classList.add("select");
   eraser.classList.remove("select");
   rainbow.classList.remove("select");
+  gray.classList.remove("select");
 });
 
 const eraser = document.querySelector("button.eraser");
@@ -86,6 +99,7 @@ eraser.addEventListener("click", () => {
   drawDefault.classList.remove("select");
   eraser.classList.add("select");
   rainbow.classList.remove("select");
+  gray.classList.remove("select");
 });
 
 const rainbow = document.querySelector("button.rainbow");
@@ -94,12 +108,23 @@ rainbow.addEventListener("click", () => {
   drawDefault.classList.remove("select");
   eraser.classList.remove("select");
   rainbow.classList.add("select");
+  gray.classList.remove("select");
 });
 
 const picker = document.querySelector("input.picker");
 picker.addEventListener("input", (e) => {
   color = e.target.value;
   drawDefault.classList.add("select");
+  eraser.classList.remove("select");
+  rainbow.classList.remove("select");
+  gray.classList.remove("select");
+});
+
+const gray = document.querySelector("button.grayscale");
+gray.addEventListener("click", () => {
+  color = "gray-scale";
+  gray.classList.add("select");
+  drawDefault.classList.remove("select");
   eraser.classList.remove("select");
   rainbow.classList.remove("select");
 });
