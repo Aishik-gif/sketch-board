@@ -3,13 +3,10 @@ let gridSize = document.querySelector(".slider").value;
 
 let colorGrid = function (e) {
   if (e.type === "mouseover" && !mouseDown) return;
-  switch (color) {
-    case "black":
-      this.style.backgroundColor = color;
-      break;
-    case "white":
-      this.style.backgroundColor = color;
-      break;
+  if (color === "rainbow") {
+    this.style.backgroundColor = `rgb(${randColor()},${randColor()},${randColor()})`;
+  } else {
+    this.style.backgroundColor = color;
   }
 };
 
@@ -48,10 +45,13 @@ function createGrid() {
 }
 
 function reset() {
-  if (color === "white") color = "black";
+  if (color === "white") {
+    color = picker.value;
+    eraser.classList.remove("select");
+    drawDefault.classList.add("select");
+  }
   grid.innerHTML = "";
   createGrid();
-  draw();
 }
 
 let mouseDown = false;
@@ -72,12 +72,43 @@ const resetButton = document.querySelector("button.reset");
 resetButton.addEventListener("click", reset);
 
 const drawDefault = document.querySelector("button.default");
-drawDefault.addEventListener("click", () => (color = "black"));
+drawDefault.classList.add("select");
+drawDefault.addEventListener("click", () => {
+  color = picker.value;
+  drawDefault.classList.add("select");
+  eraser.classList.remove("select");
+  rainbow.classList.remove("select");
+});
 
 const eraser = document.querySelector("button.eraser");
-eraser.addEventListener("click", () => (color = "white"));
+eraser.addEventListener("click", () => {
+  color = "white";
+  drawDefault.classList.remove("select");
+  eraser.classList.add("select");
+  rainbow.classList.remove("select");
+});
+
+const rainbow = document.querySelector("button.rainbow");
+rainbow.addEventListener("click", () => {
+  color = "rainbow";
+  drawDefault.classList.remove("select");
+  eraser.classList.remove("select");
+  rainbow.classList.add("select");
+});
+
+const picker = document.querySelector("input.picker");
+picker.addEventListener("input", (e) => {
+  color = e.target.value;
+  drawDefault.classList.add("select");
+  eraser.classList.remove("select");
+  rainbow.classList.remove("select");
+});
+
+function randColor() {
+  return Math.floor(Math.random() * (255 - 0 + 1));
+}
 
 window.onload = createGrid();
 
 let vh = window.innerHeight * 0.01;
-document.body.style.setProperty('--vh', `${vh}px`);
+document.documentElement.style.setProperty("--vh", `${vh}px`);

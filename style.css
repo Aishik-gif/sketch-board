@@ -18,11 +18,32 @@ body {
   height: calc(var(--vh, 1vh) * 100);
 }
 
+.holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+}
+
+.canvas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 #grid-table {
   box-shadow: 0 0 3px black;
   width: 400px;
   height: 400px;
-  cursor: cell;
+  cursor: crosshair;
 }
 div {
   user-select: none;
@@ -63,12 +84,12 @@ footer {
   margin-top: 10px;
   justify-content: space-around;
   align-items: center;
-  width: 252px;
+  width: 400px;
 }
 
 button {
   background: lightslategrey;
-  width: 60px;
+  width: 75px;
   height: 25px;
   border: none;
   color: rgba(255, 255, 255, 0.979);
@@ -81,20 +102,26 @@ button:hover {
   box-shadow: 0 0 10px rgba(4, 54, 146, 0.573);
 }
 
+.select {
+  box-shadow: 0 0 10px rgba(4, 54, 146, 0.573);
+}
+
 .slider-holder {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 30px;
 }
 
 .slider {
   -webkit-appearance: none;
-  width: 400px;
+  -moz-appearance: none;
+  width: 290px;
   height: 14px;
   background-color: rgba(128, 128, 128, 0.571);
   border-radius: 8px;
-  margin-top: 8px;
+  margin-top: 5px;
   cursor: pointer;
 }
 
@@ -107,7 +134,16 @@ button:hover {
   border-radius: 50%;
 }
 
-.slider::-webkit-slider-thumb:hover {
+.slider::-moz-slider-thumb {
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(0, 39, 105);
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.slider::-moz-slider-thumb:hover {
   background-color: orange;
 }
 
@@ -115,4 +151,34 @@ button:hover {
   font-size: 1.5em;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
+}
+
+.picker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.picker::-webkit-color-swatch {
+  border-radius: 50%;
+  border: none;
+  box-shadow: 1px 1px 4px #757575;
+}
+
+.picker::-webkit-color-swatch-wrapper {
+  padding: 0px;
+}
+
+.picker::-moz-color-swatch {
+  border-radius: 50%;
+  border: none;
+  box-shadow: 1px 1px 4px #757575;
+}
+
+.picker::-moz-color-swatch-wrapper {
+  padding: 0px;
 }
