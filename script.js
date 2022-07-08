@@ -1,10 +1,13 @@
 let color = "black";
 let gridSize = document.querySelector(".slider").value;
 
+const isRgba = /^rgba\([\d]{1,3}, [\d]{1,3}, [\d]{1,3}, [\d].[\d]\)$/;
+const isRgb = /^rgb\([\d]{1,3}, [\d]{1,3}, [\d]{1,3}\)$/;
+
 let colorGrid = function (e) {
   if (e.type === "mouseover" && !mouseDown) return;
   if (color === "rainbow") {
-    this.style.backgroundColor = `rgb(${randColor()},${randColor()},${randColor()})`;
+    this.style.backgroundColor = `rgba(${randColor()},${randColor()},${randColor()},0.9)`;
   } else if (color === "gray-scale") {
     let a = parseInt(
       this.style.backgroundColor[this.style.backgroundColor.length - 2]
@@ -12,9 +15,11 @@ let colorGrid = function (e) {
     if (this.style.backgroundColor === "white") {
       this.style.backgroundColor = `rgba(0,0,0,0.1)`;
     } else {
-      if (a < "9") {
+      if (a < "9" && !isRgb.test(this.style.backgroundColor)) {
         a += 1;
         this.style.backgroundColor = `rgba(0,0,0,0.${a})`;
+      } else if (isRgba.test(this.style.backgroundColor) || this.style.backgroundColor === "black" || isRgb.test(this.style.backgroundColor)){
+        this.style.backgroundColor = `rgba(0,0,0,0.1)`;
       }
     }
   } else {
