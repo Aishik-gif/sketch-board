@@ -11,13 +11,16 @@ let colorGrid = function (e) {
     let a = parseInt(
       this.style.backgroundColor[this.style.backgroundColor.length - 2]
     );
-    let b =this.style.backgroundColor[3];
+    let b = this.style.backgroundColor[3];
     if (this.style.backgroundColor === "white") {
       this.style.backgroundColor = `rgba(0,0,0,0.1)`;
     } else {
       if (a++ < "9" && b === "a") {
         this.style.backgroundColor = `rgba(0,0,0,0.${a})`;
-      } else if (this.style.backgroundColor === "black" || isRgb.test(this.style.backgroundColor)){
+      } else if (
+        this.style.backgroundColor === "black" ||
+        isRgb.test(this.style.backgroundColor)
+      ) {
         this.style.backgroundColor = `rgba(0,0,0,0.1)`;
       }
     }
